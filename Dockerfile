@@ -2,8 +2,15 @@ FROM ubuntu:19.10
 
 RUN dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y wine-development python msitools python-simplejson \
-                       python-six ca-certificates && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    ca-certificates \
+    msitools \
+    python \
+    python-simplejson \
+    python-six \
+    winbind \
+    wine-development \
+    && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/*
 
