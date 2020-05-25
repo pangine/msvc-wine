@@ -12,6 +12,8 @@ RUN apt-get update && \
     python \
     python-simplejson \
     python-six \
+    unzip \
+    wget \
     winbind \
     wine-development \
     && \
@@ -27,6 +29,10 @@ RUN ./vsdownload.py --accept-license --dest /opt/msvc && \
     ./install.sh /opt/msvc && \
     rm lowercase fixinclude install.sh vsdownload.py && \
     rm -rf wrappers
+
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.17.2/cmake-3.17.2-win64-x64.zip && \
+    unzip cmake-3.17.2-win64-x64.zip -d /opt && \
+    rm cmake-3.17.2-win64-x64.zip
 
 # Initialize the wine environment. Wait until the wineserver process has
 # exited before closing the session, to avoid corrupting the wine prefix.

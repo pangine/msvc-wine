@@ -1,0 +1,5 @@
+#!/bin/bash
+. $(dirname $0)/msvcenv.sh
+pgrep -f $(printf "%q" `winepath -w $BINDIR/mspdbsrv.exe`) >/dev/null ||
+  wine start /b /unix $BINDIR/mspdbsrv.exe -start -spawn
+$(dirname $0)/wine-msvc.sh /opt/cmake-3.17.2-win64-x64/bin/cmake.exe "$@"
