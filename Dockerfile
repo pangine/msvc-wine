@@ -34,6 +34,10 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.17.2/cmake-3.17.2
     unzip cmake-3.17.2-win64-x64.zip -d /opt && \
     rm cmake-3.17.2-win64-x64.zip
 
+RUN wget https://github.com/ninja-build/ninja/releases/download/v1.10.0/ninja-win.zip && \
+    unzip ninja-win.zip -d /opt/ninja && \
+    rm ninja-win.zip
+
 # Initialize the wine environment. Wait until the wineserver process has
 # exited before closing the session, to avoid corrupting the wine prefix.
 RUN wine wineboot --init && \
