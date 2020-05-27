@@ -16,5 +16,5 @@ while [ $# -gt 0 ]; do
 	ARGS+=("$a")
 	shift
 done
-wine "$EXE" "${ARGS[@]}" 2> >(grep -v '^[[:alnum:]]*:\?fixme' | grep -v ^err:bcrypt:hash_init | sed 's/\r//' >&2) | sed 's/\r//' | sed 's/z:\([\\/]\)/\1/i'
+wine "$EXE" "${ARGS[@]}" 2> >(sed '/^[[:alnum:]]*:\?fixme/d; /^err:bcrypt:hash_init/d; s/\r$//' >&2) | sed 's/z:\([\\/]\)/\1/i; s/\r$//'
 exit $PIPESTATUS
