@@ -1,5 +1,3 @@
-#!/bin/bash
-
 SDK=kits\\10
 SDK_UNIX=kits/10
 BASE=z:\\opt\\msvc
